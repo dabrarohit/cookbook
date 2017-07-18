@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid" ng-view>
+
+</div>
+
+@section scripts{
+    <environment names="Development">
+        <script src="app/app.module.js"></script>
+        <script src="app/app.route.js"></script>
+        <script src="app/services/recipeService.js"></script>
+        <script src="app/services/commentService.js"></script>
+        <script src="app/shared/header/headerDirective.js"></script>
+        <script src="app/shared/rating/ratingDirective.js"></script>
+        <script src="app/components/home/homeController.js"></script>
+        <script src="app/components/create/createController.js"></script>
+        <script src="app/components/update/updateController.js"></script>
+        <script src="app/components/detail/detailController.js"></script>
+        <script src="app/components/delete/deleteController.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/app/angularfiles.js" asp-append-version="true"></script>
+    </environment>
+}

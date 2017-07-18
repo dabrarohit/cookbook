@@ -1,0 +1,47 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optinally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/app/angularfiles.js",
+    "inputFiles": [
+      "wwwroot/app/app.module.js",
+      "wwwroot/app/app.route.js",
+      "wwwroot/app/services/recipeService.js",
+      "wwwroot/app/services/commentService.js",
+      "wwwroot/app/shared/header/headerDirective.js",
+      "wwwroot/app/shared/rating/ratingDirective.js",
+      "wwwroot/app/components/home/homeController.js",
+      "wwwroot/app/components/create/createController.js",
+      "wwwroot/app/components/update/updateController.js",
+      "wwwroot/app/components/detail/detailController.js",
+      "wwwroot/app/components/delete/deleteController.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optinally generate .map file
+    "sourceMap": false
+  }
+]

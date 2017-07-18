@@ -1,0 +1,21 @@
+﻿<div class="row">
+    <div class="col-md-6  mt-20">
+        <a ng-click="$back()" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+    </div>
+    <div class="col-md-6  mt-20 text-right">
+        <a href="#update/{{recipe.id}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> &nbsp;
+        <a href="#detail/{{recipe.id}}" class="btn btn-info"><i class="glyphicon glyphicon-expand"></i> Details</a>
+    </div>
+</div>
+
+<div class="row mt-20">
+    <div class="col-md-12">
+        <div class="alert alert-danger text-center">
+            Are you sure you want to delete recipe of {{recipe.title}}?
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button class="btn btn-danger" ng-click="Delete()">Yes</button>
+        <button class="btn btn-primary" ng-click="$back()">No</button>
+    </div>
+</div>

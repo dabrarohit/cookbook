@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-md-6  mt-20">
+        <a href="#create" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i> Create New</a>
+    </div>
+
+    <div class="col-md-3  mt-20 pull-right">
+        <input type="search" ng-model="seacrhRecipe" class="form-control pull-right" placeholder="Search" />
+    </div>
+</div>
+
+<div class="row">
+    <div ng-repeat="x in recipes | filter: seacrhRecipe" class="mt-20 col-md-4 img-container">
+        <img src="{{x.imageUrl}}" alt={{x.title}} class="img-responsive recipe-image" />
+        <div class="overlay">
+            <div class="text text-center">
+                <a href="#update/{{x.id}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><br /><br />
+                <a href="#delete/{{x.id}}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            </div>
+        </div>
+        <br />
+        <a ng-href="#detail/{{x.id}}" class="btn btn-info col-xs-12 col-sm-12 col-md-12 text-center">
+            {{x.title}}
+        </a>
+    </div>
+</div>
+
+<div ng-if="(recipes | filter: seacrhRecipe).length == 0">
+    <div class="row mt-20">
+        <div class="col-md-12">
+            <div class="alert alert-danger text-center">
+                No Data Found
+            </div>
+        </div>
+    </div>
+</div>

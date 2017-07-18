@@ -1,0 +1,64 @@
+﻿<div class="row">
+    <div class="col-md-6  mt-20">
+        <a ng-click="$back()" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+    </div>
+    <div class="col-md-6  mt-20 text-right">
+        <a href="#update/{{recipe.id}}" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> &nbsp;
+        <a href="#delete/{{recipe.id}}" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+    </div>
+</div>
+<div class="panel panel-default pd-20 mt-20">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{recipe.imageUrl}}" alt={{recipe.title}} class="img-responsive" />
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <h1>{{recipe.title}}</h1>
+            </div>
+            <div class="row">
+                <div star-rating ng-model="rating" on-rating-select="rateFunction(rating)"></div>
+            </div>
+            <div class="row">
+                <p>{{recipe.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mt-20">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Ingredients</h3></li>
+                <li class="list-group-item" ng-repeat="x in recipe.ingredients">{{x}}</li>
+            </ul>
+        </div>
+        <div class="col-md-6 mt-20">
+            <ul class="list-group">
+                <li class="list-group-item"><h3>Instructions</h3></li>
+                <li class="list-group-item" ng-repeat="x in recipe.instructions">{{x}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item"><h3>Comments</h3></li>
+        <li class="list-group-item">
+            <div class="row">
+                <input type="text" class="form-control" ng-model="comment.name" placeholder="Your Name" /> <br />
+                <textarea class="form-control" ng-model="comment.text" placeholder="Your Comment"></textarea> <br />
+                <button class="col-md-12 btn btn-primary" ng-click="PostComment()">Post Comment</button>
+            </div>
+        </li>
+        <li ng-repeat="x in comments | orderBy:'-commentedOn'" class="list-group-item">
+            <div class="row">
+                <strong class="pull-left">{{x.name}}</strong>
+                <span class="pull-right badge badge-default badge-pill ml-10" ng-click="DeleteComment($index,x.id)"><i class="glyphicon glyphicon-trash"></i> </span>
+                <span class="pull-right"><time-ago from-time='{{x.commentedOn}}'></time-ago></span>
+            </div>
+            <div class="row">
+                <p>
+                    {{x.text}}
+                </p>
+            </div>
+        </li>
+    </ul>
+</div>

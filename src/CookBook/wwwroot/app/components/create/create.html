@@ -1,0 +1,86 @@
+﻿<div class="row">
+    <div class="col-md-6  mt-20">
+        <a ng-click="$back()" class="btn btn-primary"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+    </div>
+</div>
+<div class="panel panel-default pd-20 mt-20">
+    <form name="recipeForm" novalidate>
+        <div class="row form-group">
+            <div class="col-md-3 control-label">
+                <strong>Recipe Name</strong>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="title" ng-model="recipe.title" required />
+                <span class="text-danger" ng-show="recipeForm.title.$invalid && recipeForm.title.$touched">Name is required.</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 control-label">
+                <strong>Description</strong>
+            </div>
+            <div class="col-md-9">
+                <textarea class="form-control" name="description" ng-model="recipe.description" required></textarea>
+                <span class="text-danger" ng-show="recipeForm.description.$invalid && recipeForm.description.$touched">Description is required.</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 control-label">
+                <strong>Image url</strong>
+            </div>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="imageUrl" required ng-model="recipe.imageUrl" />
+                <span class="text-danger" ng-show="recipeForm.imageUrl.$invalid && recipeForm.imageUrl.$touched">Image is required.</span>
+
+            </div>
+            <div class="col-md-3 col-md-offset-3 mt-20">
+                <img src="{{recipe.imageUrl}}" class="img-responsive" />
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 control-label">
+                <strong>Ingredients</strong>
+            </div>
+            <div class="col-md-9">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="x in recipe.ingredients">{{x}} <span class="badge badge-default badge-pill" ng-click="removeIngredient($index)">&times;</span></li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="ingredient" placeholder="Add New" ng-model="ingredient">
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button" ng-click="addIngredient()"><i class="glyphicon glyphicon-plus"></i></button>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <span class="text-danger" ng-show="recipe.ingredients.length == 0 && recipeForm.ingredient.$touched">Please add atleast one ingredient</span>
+            </div>
+
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 control-label">
+                <strong>Instructions</strong>
+            </div>
+            <div class="col-md-9">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="x in recipe.instructions">{{x}} <span class="badge badge-default badge-pill" ng-click="removeInstruction($index)">&times;</span></li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="instruction" placeholder="add new" ng-model="instruction">
+                            <!--<textarea class="form-control" placeholder="Add New" ng-model="instruction"></textarea>-->
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="button" ng-click="addInstruction()"><i class="glyphicon glyphicon-plus"></i></button>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <span class="text-danger" ng-show="recipe.instructions.length == 0 && recipeForm.instruction.$touched">Please add atleast one instruction</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="button" ng-disabled="(recipeForm.$invalid || recipe.ingredients.length == 0 || recipe.instructions.length == 0)" class="btn btn-success" value="Save" ng-click="Save()" />
+                <input type="button" class="btn btn-warning" value="Reset" ng-click="Reset()" />
+            </div>
+        </div>
+    </form>
+</div>
